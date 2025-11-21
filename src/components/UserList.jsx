@@ -2,13 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const UserList = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("https://react-crud-application-xp1v.onrender.com/users")
+      .get(`${BASE_URL}/users`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -16,7 +18,7 @@ const UserList = () => {
     const confirm = window.confirm("would you like to delete");
     if (confirm) {
       axios
-        .delete("https://react-crud-application-xp1v.onrender.com/users/" + id)
+        .delete(`${BASE_URL}/users/` + id)
         .then((res) => {
           navigate("/");
           location.reload();

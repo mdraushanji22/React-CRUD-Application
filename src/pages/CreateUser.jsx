@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const CreateUser = () => {
   const [values, setValues] = useState({
     name: "",
@@ -13,7 +15,7 @@ const CreateUser = () => {
     event.preventDefault();
     // Auto-increment id based on existing users (11, 12, 13, ...)
     axios
-      .get("https://react-crud-application-xp1v.onrender.com/users")
+      .get(`${BASE_URL}/users`)
       .then((res) => {
         const users = res.data || [];
         const maxId = users.length
@@ -27,7 +29,7 @@ const CreateUser = () => {
 
         const newUser = { ...values, id: nextId };
 
-        return axios.post("https://react-crud-application-xp1v.onrender.com/users", newUser);
+        return axios.post(`${BASE_URL}/users`, newUser);
       })
       .then((res) => {
         console.log(res);

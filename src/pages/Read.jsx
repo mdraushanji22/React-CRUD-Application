@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const Read = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -13,7 +15,7 @@ const Read = () => {
     }
 
     axios
-      .get("https://react-crud-application-xp1v.onrender.com/users/" + id)
+      .get(`${BASE_URL}/users/` + id)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, [id, location.state]);

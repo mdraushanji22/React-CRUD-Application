@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const Update = () => {
   const { id } = useParams();
   const [values, setValues] = useState({
@@ -12,14 +15,14 @@ const Update = () => {
 
   useEffect(() => {
     axios
-      .get("https://react-crud-application-xp1v.onrender.com/users/" + id)
+      .get(`${BASE_URL}/users/` + id)
       .then((res) => setValues(res.data))
       .catch((err) => console.log(err));
   }, [id]);
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("https://react-crud-application-xp1v.onrender.com/users/" + id, values)
+      .put(`${BASE_URL}/users/` + id, values)
       .then((res) => {
         console.log(res);
         navigate("/");
