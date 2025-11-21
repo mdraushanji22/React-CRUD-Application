@@ -12,14 +12,14 @@ const Update = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/users/" + id)
+      .get("https://react-crud-application-xp1v.onrender.com/users/" + id)
       .then((res) => setValues(res.data))
       .catch((err) => console.log(err));
   }, [id]);
   const handleUpdate = (event) => {
     event.preventDefault();
     axios
-      .put("http://localhost:3000/users/" + id, values)
+      .put("https://react-crud-application-xp1v.onrender.com/users/" + id, values)
       .then((res) => {
         console.log(res);
         navigate("/");
