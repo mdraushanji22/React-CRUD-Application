@@ -8,7 +8,7 @@ const UserList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/users")
+      .get("https://react-crud-application-xp1v.onrender.com/users")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -16,7 +16,7 @@ const UserList = () => {
     const confirm = window.confirm("would you like to delete");
     if (confirm) {
       axios
-        .delete("http://localhost:3000/users/" + id)
+        .delete("https://react-crud-application-xp1v.onrender.com/users/" + id)
         .then((res) => {
           navigate("/");
           location.reload();

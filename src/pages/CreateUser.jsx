@@ -13,7 +13,7 @@ const CreateUser = () => {
     event.preventDefault();
     // Auto-increment id based on existing users (11, 12, 13, ...)
     axios
-      .get("http://localhost:3000/users")
+      .get("https://react-crud-application-xp1v.onrender.com/users")
       .then((res) => {
         const users = res.data || [];
         const maxId = users.length
@@ -27,7 +27,7 @@ const CreateUser = () => {
 
         const newUser = { ...values, id: nextId };
 
-        return axios.post("http://localhost:3000/users", newUser);
+        return axios.post("https://react-crud-application-xp1v.onrender.com/users", newUser);
       })
       .then((res) => {
         console.log(res);
