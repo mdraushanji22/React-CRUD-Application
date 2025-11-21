@@ -13,7 +13,7 @@ const Read = () => {
     }
 
     axios
-      .get("http://localhost:3000/users/" + id)
+      .get("https://react-crud-application-xp1v.onrender.com/users/" + id)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, [id, location.state]);
